@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Application.Features.Commands.DeleteProduct
+namespace ProductApp.Application.Features.Commands.Product.DeleteProduct
 {
     public class DeleteProductCommand : IRequest<ServiceResponse<Guid>>
     {

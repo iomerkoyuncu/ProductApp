@@ -1,18 +1,16 @@
-﻿using ProductApp.Domain.Common;
+﻿using MediatR;
+using ProductApp.Application.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Domain.Entities
+namespace ProductApp.Application.Features.Commands.Catalog.CreateCatalog
 {
-    public class Catalog : BaseEntity
+    public class CreateCatalogCommand : IRequest<ServiceResponse<Guid>>
     {
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
-
     }
 }

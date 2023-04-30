@@ -15,7 +15,9 @@ namespace ProductApp.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services) {
             services.AddDbContext<ProductAppDbContext>(options => options.UseNpgsql("User ID=postgres;Password=root;Host=localhost;Port=5432;Database=productapp;") );
+            
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICatalogRepository, CatalogRepository>();
 
         }
     }

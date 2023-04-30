@@ -1,21 +1,20 @@
-﻿using ProductApp.Domain.Common;
+using MediatR;
+using ProductApp.Application.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Domain.Entities
+namespace ProductApp.Application.Features.Commands.Product.UpdateProduct
 {
-    public class Product: BaseEntity
+    public class UpdateProductCommand : IRequest<ServiceResponse<Guid>>
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public int Quantity { get; set; }
         public string ImgURL { get; set; }
-        public Guid CatalogId { get; set; }
-        public virtual Catalog Catalog { get; set; }
-
     }
+
 }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProductApp.Application.Features.Queries.GetAllProducts
+namespace ProductApp.Application.Features.Queries.Product.GetAllProducts
 {
     public class GetAllProductsQuery : IRequest<ServiceResponse<List<ProductViewDto>>>
     {

@@ -16,5 +16,18 @@ namespace ProductApp.Persistence.Contexts
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Catalog> Catalogs { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.CreatedDate)
+                .HasDefaultValueSql("now()");
+
+            modelBuilder.Entity<Catalog>()
+                .Property(c => c.CreatedDate)
+                .HasDefaultValueSql("now()");
+        }
     }
 }

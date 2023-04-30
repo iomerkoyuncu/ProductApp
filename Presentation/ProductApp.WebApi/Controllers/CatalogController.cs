@@ -1,28 +1,24 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ProductApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ProductApp.Application.Features.Commands.Product.UpdateProduct;
-using ProductApp.Application.Features.Commands.Product.CreateProduct;
-using ProductApp.Application.Features.Commands.Product.DeleteProduct;
-using ProductApp.Application.Features.Queries.Product.GetAllProducts;
-using ProductApp.Application.Features.Queries.Product.GetProductById;
+using ProductApp.Application.Dtos;
+using ProductApp.Application.Features.Commands.Catalog.CreateCatalog;
+using ProductApp.Application.Features.Commands.Catalog.DeleteCatalog;
+using ProductApp.Application.Features.Commands.Catalog.UpdateCatalog;
+using ProductApp.Application.Features.Queries.Catalog.GetAllCatalogs;
 using ProductApp.Application.Features.Queries.Product.GetAllProductsByCatalogId;
+using ProductApp.Application.Features.Queries.Product.GetCatalogById;
+using ProductApp.Application.Wrappers;
 
 namespace ProductApp.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class CatalogController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public ProductController(IMediator mediator)
+        public CatalogController(IMediator mediator)
         {
             this.mediator = mediator;
         }
@@ -30,32 +26,25 @@ namespace ProductApp.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var query = new GetAllProductsQuery();
-            return Ok(await mediator.Send(query));
-        }
-
-        [HttpGet("catalog/{catalogId}")]
-        public async Task<IActionResult> GetAllByCatalogId(Guid catalogId)
-        {
-            var query = new GetAllProductsByCatalogIdQuery { CatalogId = catalogId };
+            var query = new GetAllCatalogsQuery();
             return Ok(await mediator.Send(query));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var query = new GetProductByIdQuery() { Id = id };
+            var query = new GetCatalogByIdQuery() { Id = id };
             return Ok(await mediator.Send(query));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateProductCommand command)
+        public async Task<IActionResult> Post(CreateCatalogCommand command)
         {
             return Ok(await mediator.Send(command));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, UpdateProductCommand command)
+        public async Task<IActionResult> Update(Guid id, UpdateCatalogCommand command)
         {
             command.Id = id;
 
@@ -72,7 +61,7 @@ namespace ProductApp.WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id, DeleteProductCommand command)
+        public async Task<IActionResult> Delete(Guid id, DeleteCatalogCommand command)
         {
             command.Id = id;
 
@@ -87,5 +76,6 @@ namespace ProductApp.WebApi.Controllers
                 return BadRequest(response.Message);
             }
         }
+
     }
 }

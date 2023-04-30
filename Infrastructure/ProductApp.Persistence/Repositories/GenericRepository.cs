@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using ProductApp.Persistence.Contexts;
+using ProductApp.Domain.Entities;
 
 namespace ProductApp.Persistence.Repositories
 {
@@ -26,7 +27,7 @@ namespace ProductApp.Persistence.Repositories
         public async Task<T> GetById(Guid id)
         {
             return await dbContext.Set<T>().FindAsync(id);
-        } 
+        }
 
         public async Task<T> AddAsync(T entity)
         {

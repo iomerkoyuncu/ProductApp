@@ -2,14 +2,13 @@
 using MediatR;
 using ProductApp.Application.Interfaces.Repositories;
 using ProductApp.Application.Wrappers;
-using ProductApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Application.Features.Commands.CreateProduct
+namespace ProductApp.Application.Features.Commands.Product.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ServiceResponse<Guid>>
     {
@@ -24,7 +23,7 @@ namespace ProductApp.Application.Features.Commands.CreateProduct
 
         public async Task<ServiceResponse<Guid>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = mapper.Map<Product>(request);
+            var product = mapper.Map<ProductApp.Domain.Entities.Product>(request);
             await productRepository.AddAsync(product);
 
             return new ServiceResponse<Guid>(product.Id);

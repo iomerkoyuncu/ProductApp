@@ -4,12 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using AutoMapper;
-using ProductApp.Application.Dtos;
 using ProductApp.Application.Interfaces.Repositories;
 using ProductApp.Application.Wrappers;
-using ProductApp.Domain.Entities;
 
-namespace ProductApp.Application.Features.Commands.UpdateProduct
+namespace ProductApp.Application.Features.Commands.Product.UpdateProduct
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ServiceResponse<Guid>>
     {
@@ -38,7 +36,7 @@ namespace ProductApp.Application.Features.Commands.UpdateProduct
 
             await productRepository.UpdateAsync(existingProduct);
 
-            var updatedProduct = mapper.Map<Product>(existingProduct);
+            var updatedProduct = mapper.Map<ProductApp.Domain.Entities.Product>(existingProduct);
 
             return new ServiceResponse<Guid>(id: Guid.NewGuid(), message: "Product updated successfully.", value: updatedProduct.Id);
         }

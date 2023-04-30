@@ -5,14 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProductApp.Application.Features.Queries.GetProductById
+namespace ProductApp.Application.Features.Queries.Product.GetProductById
 {
-    public class GetProductByIdQuery: IRequest<ServiceResponse<GetProductByIdViewModel>>
+    public class GetProductByIdQuery : IRequest<ServiceResponse<GetProductByIdViewModel>>
     {
         public Guid Id { get; set; }
-
-
-
-
     }
 }

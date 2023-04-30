@@ -1,16 +1,14 @@
 ﻿using AutoMapper;
 using MediatR;
-using ProductApp.Application.Features.Commands.CreateProduct;
 using ProductApp.Application.Interfaces.Repositories;
 using ProductApp.Application.Wrappers;
-using ProductApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Application.Features.Commands.DeleteProduct
+namespace ProductApp.Application.Features.Commands.Product.DeleteProduct
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, ServiceResponse<Guid>>
     {

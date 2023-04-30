@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProductApp.Application.Features.Queries.GetProductById
+namespace ProductApp.Application.Features.Queries.Product.GetProductById
 {
     public class GetProductByIdViewModel
     {
@@ -10,7 +10,7 @@ namespace ProductApp.Application.Features.Queries.GetProductById
 
         public DateTime CreateDate { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         public decimal Value { get; set; }
 
