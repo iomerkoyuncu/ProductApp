@@ -1,7 +1,9 @@
+using ProductApp.Application;
 using ProductApp.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
 
 // Add services to the container.

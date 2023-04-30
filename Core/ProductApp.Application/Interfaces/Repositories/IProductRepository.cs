@@ -1,13 +1,13 @@
 ﻿using ProductApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Application.Repositories
+namespace ProductApp.Application.Interfaces.Repositories
 {
-    public interface ICatalogReadRepository: IReadRepository<Catalog>
+    public interface IProductRepository: IGenericRepository<Product>
     {
+
     }
 }
