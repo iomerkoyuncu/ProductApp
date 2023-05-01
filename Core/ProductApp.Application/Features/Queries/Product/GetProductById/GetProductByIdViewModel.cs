@@ -12,7 +12,12 @@ namespace ProductApp.Application.Features.Queries.Product.GetProductById
 
         public string Name { get; set; }
 
-        public decimal Value { get; set; }
+        public string Description { get; set; }
+
+        public string ImgURL { get; set; }
+        public Guid CatalogId { get; set; }
+
+        public int Price { get; set; }
 
         public int Quantity { get; set; }
     }
